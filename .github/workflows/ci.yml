@@ -37,13 +37,13 @@ jobs:
       - name: Tests unitaires avec coverage
         run: npm run test
 
-      - name: Upload du rapport de coverage
-        uses: actions/upload-artifact@v7
-        if: always()
-        with:
-          name: coverage-report
-          path: coverage/
-          retention-days: 7
+      # - name: Upload du rapport de coverage
+      #   uses: actions/upload-artifact@v7
+      #   if: always()
+      #   with:
+      #     name: coverage-report
+      #     path: coverage/
+      #     retention-days: 7
 
   # 2. Build de production
   build:
