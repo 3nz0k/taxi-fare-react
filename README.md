@@ -13,6 +13,12 @@ Développement ReactJS :
 - utilisation de "ref" pour récupération/manipulation d'éléments du DOM
 - manipualtion d'états
 
+## Travail à effectuer
+
+1. développer le jeu de test pour le tarif en "Hors zone"
+2. développer la logique de la fonction `export function calculateFare(jourSemaine, hour, zone, distance, estFerie)` en TDD
+3. compléter le code du composant JSX pour rendre l'application fonctionnelle
+
 ## Objectifs
 
 Vous intervenez sur le développement d'une application dédiées aux chauffeurs de taxis.
