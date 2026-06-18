@@ -7,7 +7,7 @@ Algorithmique :
 - utilisation d'opérateurs mathématiques
 
 Test unitaires :
-- développement TDD
+- [développement TDD](https://gayerie.dev/docs/testing/test/tdd.html)
 
 Développement ReactJS :
 - utilisation de "ref" pour récupération/manipulation d'éléments du DOM
@@ -17,7 +17,7 @@ Développement ReactJS :
 
 1. développer le jeu de test pour le tarif en "Hors zone"
 2. développer la logique de la fonction `export function calculateFare(jourSemaine, hour, zone, distance, estFerie)` en TDD
-3. compléter le code du composant JSX pour rendre l'application fonctionnelle
+3. compléter le code buggué du composant JSX pour rendre l'application fonctionnelle
 
 ## Objectifs
 

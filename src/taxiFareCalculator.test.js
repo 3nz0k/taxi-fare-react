@@ -131,33 +131,6 @@ describe('TaxiFareCalculator', () => {
    * 
    * Attention, le jeu de test doit comporter des heures et des distances variées afin que le jeu de test soit complet.
    */
-  describe('Hors zone', () => {
-
-    it('Tarif C : toute heure, tous jours', () => {
-      // Lundi (1), 12h → TARIF_C
-      const result = calculateFare(1, 12, Zone.HORS_ZONE, 10.5, false);
-
-      expect(result).toBeCloseTo(19.19);
-    });
-
-    it('Tarif C : dimanche nuit', () => {
-      const result = calculateFare(0, 3, Zone.HORS_ZONE, 10.5, false);
-
-      expect(result).toBeCloseTo(19.19);
-    });
-
-    it('Tarif C : vendredi midi', () => {
-      const result = calculateFare(5, 12, Zone.HORS_ZONE, 10.5, false);
-
-      expect(result).toBeCloseTo(19.19)
-    });
-
-    it('Tarif C : jour férié', () => {
-      const result = calculateFare(3, 14, Zone.HORS_ZONE, 10.5, true);
-
-      expect(result).toBeCloseTo(19.19)
-    });
-  });
 
   /**
    * Test en prenant en compte la prise en charge
