@@ -49,16 +49,22 @@ export default function App() {
       return;
     }
 
-    // const dateObj = new Date(form.date);
-    // const jourSemaine = dateObj.getDay();
-    // const hour = parseInt(form.time.split(':')[0], 10);
-    const distance = -1;
+    const dateObj = new Date(form.date);
+    const jourSemaine = dateObj.getDay();
+    const hour = parseInt(form.time.split(':')[0], 10);
+    const zone = form.zone;
+    const estFerie = form.estFerie;
+    const distance = form.distance;
+
+    console.log(jourSemaine, hour, zone, distance, estFerie);
+    
 
     if (isNaN(distance) || distance < 0) {
       setError('La distance doit être un nombre positif.');
       return;
     }
 
+    setResult(calculateFare(jourSemaine, hour, zone, distance, estFerie).toFixed(2));
   }
 
   return (
@@ -165,7 +171,7 @@ export default function App() {
       {error && <div className="error">{error}</div>}
 
       {result !== null && (
-        <div id="result">Estimation : {10000000} €</div>
+        <div id="result">Estimation : {result} €</div>
       )}
     </div>
   );

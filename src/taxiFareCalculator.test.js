@@ -20,8 +20,8 @@ describe('TaxiFareCalculator', () => {
 
     it('Tarif B : Lundi-Samedi, 17h00-10h00 (nuit)', () => {
       // Mardi (2), 18h → TARIF_B
-      const result = calculateFare(2, 18, Zone.URBAINE, 10.5, false);7
-      
+      const result = calculateFare(2, 18, Zone.URBAINE, 10.5, false); 7
+
       expect(result).toBeCloseTo(16.46);
     });
 
@@ -84,44 +84,43 @@ describe('TaxiFareCalculator', () => {
     it('Tarif B : Lundi-Samedi, 07h00-19h00', () => {
       // Mercredi (3), 12h → TARIF_B
       const result = calculateFare(3, 12, Zone.SUBURBAINE, 10.5, false);
-      expect(result).toBeCloseTo(16.46)
+      expect(result).toBeCloseTo(16.46);
     });
 
     it('Tarif C : Lundi-Samedi, 19h00-07h00 (nuit)', () => {
       // Jeudi (4), 20h → TARIF_C
       const result = calculateFare(4, 20, Zone.SUBURBAINE, 10.5, false);
-      expect(result).toBeCloseTo(19.19)
+      expect(result).toBeCloseTo(19.19);
     });
 
     it('Tarif C : Lundi-Samedi, avant 07h', () => {
       // Vendredi (5), 6h → TARIF_C
       const result = calculateFare(5, 6, Zone.SUBURBAINE, 10.5, false);
-      expect(result).toBeCloseTo(19.19)
+      expect(result).toBeCloseTo(19.19);
     });
 
     it('Tarif C : Dimanche toute la journée', () => {
       // Dimanche (0), 12h → TARIF_C
       const result = calculateFare(0, 12, Zone.SUBURBAINE, 10.5, false);
 
-      expect(result).toBeCloseTo(19.19)
+      expect(result).toBeCloseTo(19.19);
     });
 
     it('Tarif C : Jour férié (lundi-samedi)', () => {
       // Lundi (1) férié, 12h → TARIF_C
       const result = calculateFare(1, 12, Zone.SUBURBAINE, 10.5, true);
-      expect(result).toBeCloseTo(19.19)
+      expect(result).toBeCloseTo(19.19);
     });
 
     it('Tarif B : exactement à 7h', () => {
       const result = calculateFare(2, 7, Zone.SUBURBAINE, 10.5, false);
 
-      expect(result).toBeCloseTo(16.46)
+      expect(result).toBeCloseTo(16.46);
     });
 
     it('Tarif C : exactement à 19h (fin du Tarif B)', () => {
       // 19h est hors plage B (condition < 19)
       const result = calculateFare(2, 19, Zone.SUBURBAINE, 10.5, false);
-
       expect(result).toBeCloseTo(19.19);
     });
   });
@@ -131,6 +130,19 @@ describe('TaxiFareCalculator', () => {
    * 
    * Attention, le jeu de test doit comporter des heures et des distances variées afin que le jeu de test soit complet.
    */
+  describe('Hors Zone', () => {
+
+    it('Tarif C : Lundi-Dimanche, 00h00-23h59', () => {
+      // Mercredi (3), 12h → TARIF_C
+      const result = calculateFare(3, 12, Zone.HORS_ZONE, 10.5, false);
+      expect(result).toBeCloseTo(19.19);
+    });
+
+    it('Tarif C: Mardi, 6h', () => {
+      const result = calculateFare(2, 6, Zone.HORS_ZONE, 13, false);
+      expect(result).toBeCloseTo(23.14)
+    });
+  });
 
   /**
    * Test en prenant en compte la prise en charge
@@ -144,9 +156,9 @@ describe('TaxiFareCalculator', () => {
     });
 
     it('La prise en charge est appliquée quelle que soit la zone', () => {
-      const resultUrbaine = calculateFare(1, 12, Zone.URBAINE,    0, false);
+      const resultUrbaine = calculateFare(1, 12, Zone.URBAINE, 0, false);
       const resultSuburbaine = calculateFare(1, 12, Zone.SUBURBAINE, 0, false);
-      const resultHorsZone = calculateFare(1, 12, Zone.HORS_ZONE,  0, false);
+      const resultHorsZone = calculateFare(1, 12, Zone.HORS_ZONE, 0, false);
 
       expect(resultUrbaine).toBeCloseTo(2.6)
       expect(resultSuburbaine).toBeCloseTo(2.6)
@@ -183,17 +195,3 @@ describe('TaxiFareCalculator', () => {
     });
   });
 });
-
-
-const foo = 'bar';
-const beverages = { tea: [ 'chai', 'matcha', 'oolong' ] };
-
-expect(foo).to.be.a('string');
-
-expect(foo).to.equal('bar');
-
-expect(foo).to.have.lengthOf(3);
-
-expect(beverages).to.have.property('tea').with.lengthOf(3);
-
-

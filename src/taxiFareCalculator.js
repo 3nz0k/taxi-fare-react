@@ -39,4 +39,47 @@ export const TARIF_C = 1.58;
  */
 export function calculateFare(jourSemaine, hour, zone, distance, estFerie) {
 
+
+  if (zone == Zone.URBAINE) {
+
+    //Lundi à Samedi
+    if (jourSemaine >= 1 && jourSemaine <= 6) {
+      if (!estFerie) {
+
+        //Entre 10h et 17h
+        if (hour >= 10 && hour < 17) {
+          return distance * TARIF_A + PRISE_EN_CHARGE;
+        }
+        else {
+          return distance * TARIF_B + PRISE_EN_CHARGE;
+        }
+      }
+      else {
+        return distance * TARIF_B + PRISE_EN_CHARGE;
+      }
+    }
+    
+    // Dimanche
+    if (jourSemaine == 0) {
+      if (hour >= 0 && hour < 7) {
+        return distance * TARIF_C + PRISE_EN_CHARGE;
+      }
+      else {
+        return distance * TARIF_B + PRISE_EN_CHARGE;
+      }
+    }
+  }
+  
+  else if (zone == Zone.SUBURBAINE) {
+    if (!estFerie && (hour >= 7 && hour < 19) && (jourSemaine >= 1 && jourSemaine <= 6)) {
+      return distance * TARIF_B + PRISE_EN_CHARGE;
+    }
+    else{
+      return distance * TARIF_C + PRISE_EN_CHARGE;
+    }
+  }
+
+  if (zone == Zone.HORS_ZONE) {
+    return distance * TARIF_C + PRISE_EN_CHARGE;
+  }
 }
