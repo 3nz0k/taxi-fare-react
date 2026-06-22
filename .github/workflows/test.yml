@@ -51,7 +51,7 @@ jobs:
 
     steps:
       - name: Téléchargement des artefacts de build
-        uses: actions/download-artifact@v8
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist/
