@@ -1,0 +1,20 @@
+name : Workflow deployment TaxiFare
+
+permissions:
+  contents: read
+
+run-name : Workflow deployment TaxiFare
+on : [push, workflow_dispatch]
+
+jobs:
+  TaxiFare:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Step 1 - Setup NodeJS
+        uses: actions/setup-node@v6
+        with:
+            node-version: 24
+            cache: npm
+
+      - name: Installation des dépendances
+        run: npm i
